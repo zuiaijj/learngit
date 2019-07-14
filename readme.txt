@@ -1,7 +1,2 @@
-Git is a free software
-Git is a version control system
-This is make for test
-:)
-change 1
-change 2 is for mail
-change 3 
+Git is a free software distributed under the GPL
+Git is a distributed version sysytem
