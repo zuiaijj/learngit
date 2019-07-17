@@ -15,26 +15,26 @@ import java.util.List;
 
 public  class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.ViewHolder> {
     private Context mContext;
-    private List<Item> mItemList;
+    private List<Item> itemList;
 
     public RecycleItemAdapter(Context context,List<Item> itemList){
         this.mContext=context;
-        this.mItemList=itemList;
+        this.itemList=itemList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(mContext).inflate(R.layout.item_item,parent,false);
-        ViewHolder holder= new ViewHolder(view);
+        View itemView= LayoutInflater.from(mContext).inflate(R.layout.item,parent,false);
+        ViewHolder holder= new ViewHolder(itemView);
         return  holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Item item =mItemList.get(position);
-        holder.mtext.setText(item.getName());
-        holder.imageView.setImageResource(item.getImageId());
+        Item item =itemList.get(position);
+        holder.itemText.setText(item.getName());
+        holder.itemImageView.setImageResource(item.getImageId());
     }
 
     @Override
@@ -44,17 +44,17 @@ public  class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter
 
     @Override
     public int getItemCount() {
-        return mItemList.size();
+        return itemList.size();
     }
 
       static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView mtext;
-        private ImageView imageView;
+        private TextView itemText;
+        private ImageView itemImageView;
 
          ViewHolder(View itemView) {
             super(itemView);
-            mtext = (TextView) itemView.findViewById(R.id.item_item);
-            imageView=(ImageView)itemView.findViewById(R.id.icon_item);
+            itemText = (TextView) itemView.findViewById(R.id.list_textview);
+            itemImageView=(ImageView)itemView.findViewById(R.id.list_icon);
         }
     }
 

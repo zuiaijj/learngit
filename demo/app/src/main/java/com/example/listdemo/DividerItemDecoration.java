@@ -56,7 +56,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         //遍历所有item view，为它们的下方绘制分割线
         for(int i=0;i<childCount;i++){
             final View child = parent.getChildAt(i);
-            TextView textView= child.findViewById(R.id.item_item);
+            TextView textView= child.findViewById(R.id.list_textview);
             final int left = textView.getLeft();
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin;
@@ -74,7 +74,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
-            TextView textView= child.findViewById(R.id.item_item);
+            TextView textView= child.findViewById(R.id.list_textview);
             final int top = textView.getTop();
             final int bottom = textView.getBottom();
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child

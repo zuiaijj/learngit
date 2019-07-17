@@ -4,13 +4,17 @@ import androidx.annotation.NonNull;
 //import androidx.appcompat.app.AlertController;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
+
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,4 +39,18 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+//    public String getFromAssets(String fileName){
+//        try {
+//            InputStreamReader inputReader = new InputStreamReader( getResources().getAssets().open(fileName) );
+//            BufferedReader bufReader = new BufferedReader(inputReader);
+//            String line="";
+//            String Result="";
+//            while((line = bufReader.readLine()) != null)
+//                Result += line;
+//            return Result;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
 }

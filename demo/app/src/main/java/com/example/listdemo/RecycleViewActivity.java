@@ -13,7 +13,7 @@ import java.util.List;
 
 public class RecycleViewActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private List<Item> ItemList=new ArrayList<>();
+    private List<Item> itemList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class RecycleViewActivity extends AppCompatActivity {
     private void initItem(){
         for(int i=0;i<20;i=i+1){
             Item item=new Item("第"+i+"个数字",R.mipmap.ic_launcher);
-            ItemList.add(item);
+            itemList.add(item);
             //oast.makeText(Main2Activity.this,item.getName()+"",Toast.LENGTH_LONG).show();
         }
     }
@@ -40,7 +40,7 @@ public class RecycleViewActivity extends AppCompatActivity {
         //manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));
-        RecycleItemAdapter adapter =new RecycleItemAdapter(this,ItemList);
+        RecycleItemAdapter adapter =new RecycleItemAdapter(this,itemList);
         mRecyclerView.setAdapter(adapter);
     }
 

@@ -11,3 +11,5 @@
 /build
 /captures
 .externalNativeBuild
+demo/app/src/main/assets/
+demo/app/src/main/res/mipmap-xhdpi/assets/
