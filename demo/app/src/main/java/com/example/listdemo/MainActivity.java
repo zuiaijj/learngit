@@ -1,17 +1,15 @@
 package com.example.listdemo;
 
-import androidx.annotation.NonNull;
-//import androidx.appcompat.app.AlertController;
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+//import androidx.appcompat.app.AlertController;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ImageView imageView = findViewById(R.id.imageView);
+        imageView.setImageResource(R.mipmap.moive_icon_3x);
     }
 
     @Override
@@ -30,27 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.tv_test:
-                Intent intent= new Intent(MainActivity.this, RecycleViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, RecycleViewActivity.class);
                 startActivity(intent);
                 break;
             default:
         }
         return true;
     }
-//    public String getFromAssets(String fileName){
-//        try {
-//            InputStreamReader inputReader = new InputStreamReader( getResources().getAssets().open(fileName) );
-//            BufferedReader bufReader = new BufferedReader(inputReader);
-//            String line="";
-//            String Result="";
-//            while((line = bufReader.readLine()) != null)
-//                Result += line;
-//            return Result;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 
 }
