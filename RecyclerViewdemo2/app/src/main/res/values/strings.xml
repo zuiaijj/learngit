@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">RecyclerView demo2</string>
+    <string name="music"> 音乐</string>
+    <string name="dance">舞蹈</string>
+    <string name="video">电台</string>
+    <string name="firend">交友</string>
+    <string name="man">男神</string>
+    <string name="school">校园</string>
+    <string name="outside">户外</string>
+    <string name="change">换装</string>
+    <string name="more">更多</string>
+    <string name="talkshow">脱口秀</string>
+
+</resources>

@@ -87,21 +87,20 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         contentViewHolder(View contentView) {
             super(contentView);
-            itemNameText = (TextView) itemView.findViewById(R.id.list_textview);
-            goldenText = (TextView) itemView.findViewById(R.id.golden_item_text_tv);
-            sliverText = (TextView) itemView.findViewById(R.id.sliver_item_text_tv);
-            itemImageView = (ImageView) itemView.findViewById(R.id.list_icon);
-            liWuBangItemImageView1 = (ImageView) itemView.findViewById(R.id.liwubang_iv1);
-            liWuBangItemImageView2 = (ImageView) itemView.findViewById(R.id.liwubang_iv2);
-            liWuBangItemImageView3 = (ImageView) itemView.findViewById(R.id.liwubang_iv3);
+            itemNameText = (TextView) contentView.findViewById(R.id.list_textview);
+            goldenText = (TextView) contentView.findViewById(R.id.golden_item_text_tv);
+            sliverText = (TextView) contentView.findViewById(R.id.sliver_item_text_tv);
+            itemImageView = (ImageView) contentView.findViewById(R.id.list_icon);
+            liWuBangItemImageView1 = (ImageView) contentView.findViewById(R.id.liwubang_iv1);
+            liWuBangItemImageView2 = (ImageView) contentView.findViewById(R.id.liwubang_iv2);
+            liWuBangItemImageView3 = (ImageView) contentView.findViewById(R.id.liwubang_iv3);
         }
     }
 
     static class headViewHolder extends RecyclerView.ViewHolder {
-        headViewHolder(View contentView) {
-            super(contentView);
+        headViewHolder(View headView) {
+            super(headView);
         }
+
     }
-
-
 }
