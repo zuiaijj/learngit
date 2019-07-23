@@ -46,28 +46,28 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
 
-    public static class myViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView itemIV;
 
-        myViewHolder(View imageView) {
+        MyViewHolder(View imageView) {
             super(imageView);
             itemIV = imageView.findViewById(R.id.item_image_iv);
         }
     }
 
-    public static class myBigViewHolder extends RecyclerView.ViewHolder {
+    public static class MyBigViewHolder extends RecyclerView.ViewHolder {
         private ImageView bigItemIV;
 
-        myBigViewHolder(View imageView) {
+        MyBigViewHolder(View imageView) {
             super(imageView);
             bigItemIV = imageView.findViewById(R.id.big_item_image_iv);
         }
     }
 
-    public static class myButtonViewHolder extends RecyclerView.ViewHolder {
+    public static class MyButtonViewHolder extends RecyclerView.ViewHolder {
         private Button buttonItemBT;
 
-        myButtonViewHolder(View itemButtonView) {
+        MyButtonViewHolder(View itemButtonView) {
             super(itemButtonView);
             buttonItemBT = itemButtonView.findViewById(R.id.item_button_bt);
         }
@@ -85,56 +85,56 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == ITEM_TYPE_IMAGE) {
             View imageView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image, parent, false);
-            myViewHolder holder = new myViewHolder(imageView);
+            MyViewHolder holder = new MyViewHolder(imageView);
             return holder;
         } else if (viewType == ITEM_TYPE_BUTTON) {
             View itemButtonView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_single_buttton, parent, false);
-            myButtonViewHolder holder = new myButtonViewHolder(itemButtonView);
+            MyButtonViewHolder holder = new MyButtonViewHolder(itemButtonView);
             return holder;
         } else {
             View imageView = LayoutInflater.from(parent.getContext()).inflate(R.layout.big_item_image, parent, false);
-            myBigViewHolder holder = new myBigViewHolder(imageView);
+            MyBigViewHolder holder = new MyBigViewHolder(imageView);
             return holder;
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
-        if (holder instanceof myViewHolder) {
+        if (holder instanceof MyViewHolder) {
             Item item = mItemData.get(position);
-            ((myViewHolder) holder).itemIV.setImageResource(item.getImgId());
+            ((MyViewHolder) holder).itemIV.setImageResource(item.getImgId());
             if (mOnItemClickListener != null) {
-                ((myViewHolder) holder).itemIV.setOnClickListener(new View.OnClickListener() {
+                ((MyViewHolder) holder).itemIV.setOnClickListener(new View.OnClickListener() {
                     final int tag = position;
 
                     @Override
                     public void onClick(View view) {
-                        mOnItemClickListener.onItemClick(((myViewHolder) holder).itemIV, tag + 1);
+                        mOnItemClickListener.onItemClick(((MyViewHolder) holder).itemIV, tag + 1);
                     }
                 });
             }
-        } else if (holder instanceof myBigViewHolder) {
+        } else if (holder instanceof MyBigViewHolder) {
             Item item = mItemData.get(position);
-            ((myBigViewHolder) holder).bigItemIV.setImageResource(item.getImgId());
+            ((MyBigViewHolder) holder).bigItemIV.setImageResource(item.getImgId());
             if (mOnItemClickListener != null) {
-                ((myBigViewHolder) holder).bigItemIV.setOnClickListener(new View.OnClickListener() {
+                ((MyBigViewHolder) holder).bigItemIV.setOnClickListener(new View.OnClickListener() {
                     final int tag = position;
 
                     @Override
                     public void onClick(View view) {
-                        mOnItemClickListener.onItemClick(((myBigViewHolder) holder).bigItemIV, tag + 1);
+                        mOnItemClickListener.onItemClick(((MyBigViewHolder) holder).bigItemIV, tag + 1);
                     }
                 });
             }
         } else {
             Item item = mItemData.get(position);
             final String buttonName = item.getButtonName();
-            ((myButtonViewHolder) holder).buttonItemBT.setText(item.getButtonName());
+            ((MyButtonViewHolder) holder).buttonItemBT.setText(item.getButtonName());
             if (mOnButtonItemClickListener != null) {
-                ((myButtonViewHolder) holder).buttonItemBT.setOnClickListener(new View.OnClickListener() {
+                ((MyButtonViewHolder) holder).buttonItemBT.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        mOnButtonItemClickListener.onButtonItemClick(((myButtonViewHolder) holder).buttonItemBT, buttonName);
+                        mOnButtonItemClickListener.onButtonItemClick(((MyButtonViewHolder) holder).buttonItemBT, buttonName);
                     }
                 });
             }
