@@ -4,4 +4,13 @@
     <string name="附近">附近</string>
     <string name="关注">关注</string>
     <string name="我的">我的</string>
+    <string name="Main">Main</string>
+    <string name="head">head</string>
+    <string name="edit_text">编辑个人资料</string>
+    <string name="user_name">港岛妹妹</string>
+    <string name="inke_num">映客号98769098</string>
+    <string name="personal_mail">私信</string>
+    <string name="task_center">任务中心</string>
+    <string name="action_center">活动中心</string>
+    <string name="shop">商场</string>
 </resources>

@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // mFragments = DataGenerator.getFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MineFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainFragment()).commit();
         init();
     }
 
