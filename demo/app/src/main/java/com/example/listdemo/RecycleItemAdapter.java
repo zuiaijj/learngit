@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import java.util.List;
 public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int ITEM_TYPE_HEADER = 0;
     public static final int ITEM_TYPE_CONTENT = 1;
+    public static final int ITEM_TYPE_LINE = 2;
     private int mHeaderCount = 1;
     private Context mContext;
     private List<Item> itemList;
@@ -30,7 +32,9 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public int getItemViewType(int position) {
         if (mHeaderCount != 0 && position < mHeaderCount) {
             return ITEM_TYPE_HEADER;
-        } else {
+        } else if(position%4==0){
+            return ITEM_TYPE_LINE;
+        }else {
             return ITEM_TYPE_CONTENT;
         }
     }
@@ -46,8 +50,11 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             View contentView = LayoutInflater.from(mContext).inflate(R.layout.item, parent, false);
             contentViewHolder holder = new contentViewHolder(contentView);
             return holder;
+        }else {
+            View lineView = LayoutInflater.from(mContext).inflate(R.layout.divider_line,parent,false);
+            lineViewHolder holder = new lineViewHolder(lineView);
+            return holder;
         }
-        return null;
     }
 
     @Override
@@ -63,6 +70,8 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             ((contentViewHolder) holder).liWuBangItemImageView1.setImageResource(item.getliwubang_imageId1());
             ((contentViewHolder) holder).liWuBangItemImageView2.setImageResource(item.getliwubang_imageId2());
             ((contentViewHolder) holder).liWuBangItemImageView3.setImageResource(item.getliwubang_imageId3());
+        }else {
+
         }
     }
 
@@ -100,6 +109,12 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     static class headViewHolder extends RecyclerView.ViewHolder {
         headViewHolder(View headView) {
             super(headView);
+        }
+
+    }
+    static class lineViewHolder extends RecyclerView.ViewHolder {
+        lineViewHolder(View lineView) {
+            super(lineView);
         }
 
     }
