@@ -5,9 +5,11 @@
     >
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/关注"/>
+        android:text="@string/关注"
+        android:textSize="50sp"/>
 
 </LinearLayout>

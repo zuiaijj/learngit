@@ -8,6 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/附近"/>
+        android:text="@string/附近"
+        android:textSize="50sp"/>
 
 </LinearLayout>

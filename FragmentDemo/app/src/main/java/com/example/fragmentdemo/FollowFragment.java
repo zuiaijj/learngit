@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,4 +17,5 @@ public class FollowFragment extends Fragment {
         View view = inflater.inflate(R.layout.follow_fragment,container,false);
         return view;
     }
+
 }

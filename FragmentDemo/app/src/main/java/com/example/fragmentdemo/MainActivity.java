@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     private void init(){
         mTablayout = findViewById(R.id.bottom_tab_layout);
 
-        mTablayout.addTab(mTablayout.newTab().setIcon(R.mipmap.ic_launcher).setText(DataGenerator.tabName[0]));
-        mTablayout.addTab(mTablayout.newTab().setIcon(R.mipmap.ic_launcher).setText(DataGenerator.tabName[1]));
-        mTablayout.addTab(mTablayout.newTab().setIcon(R.mipmap.ic_launcher).setText(DataGenerator.tabName[2]));
-        mTablayout.addTab(mTablayout.newTab().setIcon(R.mipmap.ic_launcher).setText(DataGenerator.tabName[3]));
+        mTablayout.addTab(mTablayout.newTab().setText(DataGenerator.tabName[0]));
+        mTablayout.addTab(mTablayout.newTab().setText(DataGenerator.tabName[1]));
+        mTablayout.addTab(mTablayout.newTab().setText(DataGenerator.tabName[2]));
+        mTablayout.addTab(mTablayout.newTab().setText(DataGenerator.tabName[3]));
 
         mTablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         if(fragment!=null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
         }
     }
 }
