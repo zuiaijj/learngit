@@ -1,30 +1,32 @@
 package com.example.fragmentdemo;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
     private TabLayout mTablayout;
-    private Fragment[] mFragments;
+
+    //private Fragment[] mFragments;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mFragments = DataGenerator.getFragment();
+        // mFragments = DataGenerator.getFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MineFragment()).commit();
         init();
     }
 
-    private void init(){
+    private void init() {
         mTablayout = findViewById(R.id.bottom_tab_layout);
 
-        mTablayout.addTab(mTablayout.newTab().setText(DataGenerator.tabName[0]));
-        mTablayout.addTab(mTablayout.newTab().setText(DataGenerator.tabName[1]));
-        mTablayout.addTab(mTablayout.newTab().setText(DataGenerator.tabName[2]));
-        mTablayout.addTab(mTablayout.newTab().setText(DataGenerator.tabName[3]));
+        mTablayout.addTab(mTablayout.newTab().setIcon(R.mipmap.ic_launcher).setText(DataGenerator.tabName[0]));
+        mTablayout.addTab(mTablayout.newTab().setIcon(R.mipmap.ic_launcher).setText(DataGenerator.tabName[1]));
+        mTablayout.addTab(mTablayout.newTab().setIcon(R.mipmap.ic_launcher).setText(DataGenerator.tabName[2]));
+        mTablayout.addTab(mTablayout.newTab().setIcon(R.mipmap.ic_launcher).setText(DataGenerator.tabName[3]));
 
         mTablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -45,24 +47,24 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void onItemTabSelected(int position){
+    private void onItemTabSelected(int position) {
         Fragment fragment = null;
-        switch (position){
+        switch (position) {
             case 0:
-                fragment = mFragments[0];
+                fragment = new MainFragment();
                 break;
             case 1:
-                fragment = mFragments[1];
+                fragment = new RoundFragment();
                 break;
             case 2:
-                fragment = mFragments[2];
+                fragment = new FollowFragment();
                 break;
             case 3:
-                fragment = mFragments[3];
+                fragment = new MineFragment();
                 break;
         }
-        if(fragment!=null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
         }
     }
 }

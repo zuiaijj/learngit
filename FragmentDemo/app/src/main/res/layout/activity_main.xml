@@ -20,6 +20,5 @@
         app:tabIndicatorHeight="0dp"
         app:tabSelectedTextColor="@android:color/black"
         app:tabTextColor="@android:color/darker_gray"
-        android:layout_height="50dp">
-    </com.google.android.material.tabs.TabLayout>
+        android:layout_height="50dp"/>
 </LinearLayout>
