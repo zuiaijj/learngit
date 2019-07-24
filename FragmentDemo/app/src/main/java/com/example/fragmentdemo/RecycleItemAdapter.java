@@ -19,9 +19,9 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public static final int ITEM_TYPE_CONTENT = 1;
     private int mHeaderCount = 1;
     private Context mContext;
-    private List<Item> itemList;
+    private List<ListItem> itemList;
 
-    public RecycleItemAdapter(Context context, List<Item> itemList) {
+    public RecycleItemAdapter(Context context, List<ListItem> itemList) {
         this.mContext = context;
         this.itemList = itemList;
     }
@@ -52,17 +52,17 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Item item = itemList.get(position);
+        ListItem ListItem = itemList.get(position);
         if (holder instanceof headViewHolder) {
 
         } else if (holder instanceof contentViewHolder) {
-            ((contentViewHolder) holder).itemNameText.setText(item.getName());
-            ((contentViewHolder) holder).goldenText.setText(item.getgolden_item_text());
-            ((contentViewHolder) holder).sliverText.setText(item.getsliver_item_text());
-            ((contentViewHolder) holder).itemImageView.setImageResource(item.getImageId());
-            ((contentViewHolder) holder).liWuBangItemImageView1.setImageResource(item.getliwubang_imageId1());
-            ((contentViewHolder) holder).liWuBangItemImageView2.setImageResource(item.getliwubang_imageId2());
-            ((contentViewHolder) holder).liWuBangItemImageView3.setImageResource(item.getliwubang_imageId3());
+            ((contentViewHolder) holder).itemNameText.setText(ListItem.getName());
+            ((contentViewHolder) holder).goldenText.setText(ListItem.getgolden_item_text());
+            ((contentViewHolder) holder).sliverText.setText(ListItem.getsliver_item_text());
+            ((contentViewHolder) holder).itemImageView.setImageResource(ListItem.getImageId());
+            ((contentViewHolder) holder).liWuBangItemImageView1.setImageResource(ListItem.getliwubang_imageId1());
+            ((contentViewHolder) holder).liWuBangItemImageView2.setImageResource(ListItem.getliwubang_imageId2());
+            ((contentViewHolder) holder).liWuBangItemImageView3.setImageResource(ListItem.getliwubang_imageId3());
         }
     }
 

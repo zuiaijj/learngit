@@ -1,7 +1,7 @@
 package com.example.fragmentdemo;
 
 
-public class Item {
+public class ListItem {
     private String name;
     private String golden_item_text = null;
     private String sliver_item_text = null;
@@ -11,7 +11,7 @@ public class Item {
     private int liwubang_imageId2;
     private int liwubang_imageId3;
 
-    public Item(String name, int icon_imageId, int liwubang_imageId1, int liwubang_imageId2, int liwubang_imageId3, String golden_item_text, String sliver_item_text, boolean isHead) {
+    public ListItem(String name, int icon_imageId, int liwubang_imageId1, int liwubang_imageId2, int liwubang_imageId3, String golden_item_text, String sliver_item_text, boolean isHead) {
         this.name = name;
         this.golden_item_text = golden_item_text;
         this.sliver_item_text = sliver_item_text;
@@ -22,7 +22,7 @@ public class Item {
         this.liwubang_imageId3 = liwubang_imageId3;
     }
 
-    public Item(String name, int icon_imageId, int liwubang_imageId1, int liwubang_imageId2, int liwubang_imageId3) {
+    public ListItem(String name, int icon_imageId, int liwubang_imageId1, int liwubang_imageId2, int liwubang_imageId3) {
         this.name = name;
         this.icon_imageId = icon_imageId;
         this.liwubang_imageId1 = liwubang_imageId1;
@@ -30,14 +30,14 @@ public class Item {
         this.liwubang_imageId3 = liwubang_imageId3;
     }
 
-    public Item(String name, int icon_imageId, String golden_item_text, String sliver_item_text) {
+    public ListItem(String name, int icon_imageId, String golden_item_text, String sliver_item_text) {
         this.name = name;
         this.golden_item_text = golden_item_text;
         this.sliver_item_text = sliver_item_text;
         this.icon_imageId = icon_imageId;
     }
 
-    public Item(String name, int icon_imageId) {
+    public ListItem(String name, int icon_imageId) {
         this.name = name;
         this.icon_imageId = icon_imageId;
     }
