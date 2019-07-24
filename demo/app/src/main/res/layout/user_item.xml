@@ -49,60 +49,20 @@
         android:textColor="#999999"
         android:textSize="12sp" />
 
+
     <LinearLayout
-        android:id="@+id/iv_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/user_num_tv"
-        android:layout_marginTop="45dp">
-
-        <ImageView
-            android:id="@+id/personal_mail_iv"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="32dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/personal_mail"
-            app:srcCompat="@mipmap/sixing_2x" />
-
-        <ImageView
-            android:id="@+id/task_center_iv"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/task_center"
-            app:srcCompat="@mipmap/renwuzhongxing_2x" />
-
-        <ImageView
-            android:id="@+id/action_center_iv"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/action_center"
-            app:srcCompat="@mipmap/renwuzhongxing_2x" />
-
-        <ImageView
-            android:id="@+id/shop_iv"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginRight="32dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/shop"
-            app:srcCompat="@mipmap/shangcheng_2x" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/iv_icon"
-        android:layout_marginTop="7dp">
+        android:layout_marginTop="50dp">
 
         <TextView
             android:id="@+id/action_center_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="44dp"
             android:layout_weight="1"
+            android:drawableTop="@mipmap/sixing_2x"
+            android:gravity="center_horizontal"
             android:text="@string/action_center"
             android:textColor="#000000"
             android:textSize="12sp" />
@@ -111,8 +71,9 @@
             android:id="@+id/shop_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="24dp"
             android:layout_weight="1"
+            android:drawableTop="@mipmap/shangcheng_2x"
+            android:gravity="center_horizontal"
             android:text="@string/shop"
             android:textColor="#000000"
             android:textSize="12sp" />
@@ -122,6 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:drawableTop="@mipmap/sixing_2x"
+            android:gravity="center_horizontal"
             android:text="@string/personal_mail"
             android:textColor="#000000"
             android:textSize="12sp" />
@@ -131,6 +94,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:drawableTop="@mipmap/renwuzhongxing_2x"
+            android:gravity="center_horizontal"
             android:text="@string/task_center"
             android:textColor="#000000"
             android:textSize="12sp" />
