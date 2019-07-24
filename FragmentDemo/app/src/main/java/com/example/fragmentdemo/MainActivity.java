@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // mFragments = DataGenerator.getFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new MainFragment()).commit();
         init();
     }
 
@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new RoundFragment();
                 break;
             case 2:
-                fragment = new FollowFragment();
+                fragment = new MainFragment();
                 break;
             case 3:
-                fragment = new MineFragment();
+                fragment = new RoundFragment();
                 break;
         }
         if (fragment != null) {
