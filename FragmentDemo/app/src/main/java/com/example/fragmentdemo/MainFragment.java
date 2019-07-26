@@ -69,5 +69,12 @@ public class MainFragment extends Fragment {
         RecycleItemAdapter adapter = new RecycleItemAdapter(context, itemList);
         mRecyclerView.setAdapter(adapter);
     }
+    public static MainFragment newInstance(String tag){
+        MainFragment mainFragment =new MainFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("tag",tag);
+        mainFragment.setArguments(bundle);
+        return mainFragment;
+    }
 
 }

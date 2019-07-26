@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new RoundFragment();
                 break;
             case 2:
-                fragment = new MainFragment();
+                fragment = new MineFragment();
                 break;
             case 3:
                 fragment = new RoundFragment();

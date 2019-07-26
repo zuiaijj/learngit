@@ -11,4 +11,12 @@
         android:text="@string/我的"
         android:textSize="50sp"/>
 
+    <TextView
+        android:id="@+id/time_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="50sp"
+        android:layout_marginTop="100dp"/>
+
 </LinearLayout>

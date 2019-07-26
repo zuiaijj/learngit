@@ -18,3 +18,4 @@ public class FollowFragment extends Fragment {
     }
 
 }
+
