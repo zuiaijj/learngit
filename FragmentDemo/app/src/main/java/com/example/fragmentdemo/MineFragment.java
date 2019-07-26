@@ -14,33 +14,44 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
-import java.sql.Time;
+import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class MineFragment extends Fragment {
-
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case START_TIME:
-                    timeTv.setText(msg.arg1 + "");
-                    Log.d("time", "timechange" + msg.arg1);
-                    break;
-                case STOP_TIME:
-                    timeTv.setText("开始倒计时");
-                    break;
-
-            }
-        }
-    };
     private TextView timeTv;
     private static final int START_TIME = 1;
     private static final int STOP_TIME = 0;
+
+    private static class CountHandler extends Handler {
+        private final WeakReference<TextView> target;
+
+        public CountHandler(TextView timeTv) {
+            target = new WeakReference<TextView>(timeTv);
+        }
+
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            TextView handerTv = target.get();
+            if (handerTv != null) {
+                super.handleMessage(msg);
+                switch (msg.what) {
+                    case START_TIME:
+                        handerTv.setText("倒计时" + msg.arg1);
+                        Log.d("time", "timechange" + msg.arg1);
+                        break;
+                    case STOP_TIME:
+                        handerTv.setText("开始倒计时");
+                        System.gc();
+                        break;
+                }
+            } else {
+                Log.d("time", "引用被回收");
+            }
+        }
+    }
+
 
     @Nullable
     @Override
@@ -52,19 +63,31 @@ public class MineFragment extends Fragment {
 
     }
 
+    private Timer timer;
+    private CountHandler handler;
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        handler = new CountHandler(timeTv);
         super.onActivityCreated(savedInstanceState);
         timeTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Timer timer = new Timer();
+                if (timer == null) {
+                    timer = new Timer();
+                } else {
+                    timer.cancel();
+                    timer = new Timer();
+                }
                 timer.schedule(new TimerTask() {
                     int time = 30;
 
                     @Override
                     public void run() {
                         Message message = new Message();
+                        if (handler != null) {
+                            Log.d("time", handler.toString());
+                        }
                         if (time >= 0) {
                             message.what = START_TIME;
                             message.arg1 = time;
@@ -80,5 +103,15 @@ public class MineFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        timer.cancel();
+        System.gc();
+        handler.removeCallbacksAndMessages(null);
+        Log.d("time", handler.toString() + "onDetach");
+//            handler.removeCallbacksAndMessages(null);
     }
 }

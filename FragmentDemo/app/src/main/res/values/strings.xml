@@ -13,4 +13,5 @@
     <string name="task_center">任务中心</string>
     <string name="action_center">活动中心</string>
     <string name="shop">商场</string>
+    <string name="blank"> </string>
 </resources>
