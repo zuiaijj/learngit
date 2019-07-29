@@ -91,11 +91,15 @@ public class MineFragment extends Fragment {
                         if (time >= 0) {
                             message.what = START_TIME;
                             message.arg1 = time;
-                            handler.sendMessage(message);
+                            if(handler!=null) {
+                                handler.sendMessage(message);
+                            }
                             time--;
                         } else {
                             message.what = STOP_TIME;
-                            handler.sendMessage(message);
+                            if(handler!=null) {
+                                handler.sendMessage(message);
+                            }
                             timer.cancel();
                         }
                     }
@@ -108,7 +112,9 @@ public class MineFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        timer.cancel();
+        if(timer!=null) {
+            timer.cancel();
+        }
         System.gc();
         handler.removeCallbacksAndMessages(null);
         Log.d("time", handler.toString() + "onDetach");
