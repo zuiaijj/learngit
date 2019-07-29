@@ -14,4 +14,6 @@
     <string name="action_center">活动中心</string>
     <string name="shop">商场</string>
     <string name="blank"> </string>
+    <string name="倒计时">倒计时</string>
+    <string name="开始倒计时">开始倒计时</string>
 </resources>
