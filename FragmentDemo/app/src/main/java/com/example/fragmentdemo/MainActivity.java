@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new MineFragment();
                 break;
             case 3:
-                fragment = new RoundFragment();
+                fragment = new FollowFragment();
                 break;
         }
         if (fragment != null) {
