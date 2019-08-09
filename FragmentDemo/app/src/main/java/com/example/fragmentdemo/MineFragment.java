@@ -1,5 +1,6 @@
 package com.example.fragmentdemo;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,28 +26,31 @@ public class MineFragment extends Fragment {
     private static final int STOP_TIME = 0;
     private Timer timer;
     private CountHandler handler;
+    private Context context;
 
 
     private static class CountHandler extends Handler {
         private final WeakReference<TextView> target;
+        private final WeakReference<Context> wContent;
 
-        CountHandler(TextView timeTv) {
+        CountHandler(TextView timeTv, Context context) {
             target = new WeakReference<>(timeTv);
+            wContent = new WeakReference<>(context);
         }
 
         @Override
         public void handleMessage(@NonNull Message msg) {
             TextView handlerTv = target.get();
+            Context context = wContent.get();
             if (handlerTv != null) {
                 super.handleMessage(msg);
                 switch (msg.what) {
                     case START_TIME:
-                        handlerTv.setText(R.string.倒计时 + msg.arg1);
+                        handlerTv.setText(context.getResources().getString(R.string.倒计时) + msg.arg1);
                         Log.d("time", "timechange" + msg.arg1);
                         break;
                     case STOP_TIME:
-                        handlerTv.setText(R.string.开始倒计时);
-                        System.gc();
+                        handlerTv.setText(context.getResources().getString(R.string.开始倒计时));
                         break;
                 }
             } else {
@@ -62,6 +66,7 @@ public class MineFragment extends Fragment {
         View view = inflater.inflate(R.layout.mine_fragment, container, false);
         timeTv = view.findViewById(R.id.time_tx);
         timeTv.setText(R.string.开始倒计时);
+        context = this.getActivity();
         return view;
 
     }
@@ -69,7 +74,7 @@ public class MineFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        handler = new CountHandler(timeTv);
+        handler = new CountHandler(timeTv, context);
         super.onActivityCreated(savedInstanceState);
         timeTv.setOnClickListener(new View.OnClickListener() {
             @Override

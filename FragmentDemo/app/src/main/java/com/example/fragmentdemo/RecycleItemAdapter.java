@@ -1,12 +1,12 @@
 package com.example.fragmentdemo;
 
-//import androidx.appcompat.app.AlertController;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +17,7 @@ import java.util.List;
 public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int ITEM_TYPE_HEADER = 0;
     public static final int ITEM_TYPE_CONTENT = 1;
+    public static final int ITEM_TYPE_LOAD = 2;
     private int mHeaderCount = 1;
     private Context mContext;
     private List<ListItem> itemList;
@@ -30,6 +31,9 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public int getItemViewType(int position) {
         if (mHeaderCount != 0 && position < mHeaderCount) {
             return ITEM_TYPE_HEADER;
+        }
+        if (position + 1 == getItemCount()) {
+            return ITEM_TYPE_LOAD;
         } else {
             return ITEM_TYPE_CONTENT;
         }
@@ -41,6 +45,11 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if (viewType == ITEM_TYPE_HEADER) {
             View headView = LayoutInflater.from(mContext).inflate(R.layout.user_item, parent, false);
             headViewHolder holder = new headViewHolder(headView);
+            return holder;
+        }
+        if (viewType == ITEM_TYPE_LOAD) {
+            View loadView = LayoutInflater.from(mContext).inflate(R.layout.item_load, parent, false);
+            loadViewHolder holder = new loadViewHolder(loadView);
             return holder;
         } else if (viewType == ITEM_TYPE_CONTENT) {
             View contentView = LayoutInflater.from(mContext).inflate(R.layout.item, parent, false);
@@ -102,5 +111,30 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             super(headView);
         }
 
+    }
+
+    static class loadViewHolder extends RecyclerView.ViewHolder {
+        private ProgressBar loadprogressBar;
+
+        loadViewHolder(View loadView) {
+            super(loadView);
+            loadprogressBar = loadView.findViewById(R.id.load_pb);
+        }
+
+    }
+
+
+    public void addAllWithoutLoad(List<ListItem> addedList) {
+        int startIndex = this.itemList.size();
+        this.itemList.remove(startIndex - 1);
+        notifyItemRangeRemoved(startIndex, startIndex - 1);
+        this.itemList.addAll(addedList);
+        notifyItemRangeInserted(startIndex, itemList.size());
+    }
+
+    public void addLoad() {
+        int startIndex = this.itemList.size();
+        itemList.add(new ListItem("", 0));
+        notifyItemRangeInserted(startIndex, startIndex + 1);
     }
 }

@@ -3,6 +3,8 @@ package com.example.fragmentdemo;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,20 +56,43 @@ public class MainFragment extends Fragment {
         itemList.add(new ListItem("主播入驻频道", R.mipmap.zhuborenzheng_copy_2x, null, "已认证"));
         isThick.add(11);
         itemList.add(new ListItem("设置", R.mipmap.shezhi_copy_2x));
+        itemList.add(new ListItem("设置", R.mipmap.shezhi_copy_2x));
+        //itemList.add(new ListItem("load", 0));
         isThick.add(12);
 
     }
 
     private void initRecyclerView() {
-        LinearLayoutManager manager = new LinearLayoutManager(context);
+        final LinearLayoutManager manager = new LinearLayoutManager(context);
         //manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(manager);
         MyDividerItemDecoration dividerItemDecoration = new MyDividerItemDecoration(context, manager.getOrientation(), isThick);
         Drawable drawable = ContextCompat.getDrawable(context, R.drawable.divider_sharp);
         dividerItemDecoration.setDrawable(drawable);
-        mRecyclerView.addItemDecoration(dividerItemDecoration);
-        RecycleItemAdapter adapter = new RecycleItemAdapter(context, itemList);
+        //mRecyclerView.addItemDecoration(dividerItemDecoration);
+        final RecycleItemAdapter adapter = new RecycleItemAdapter(context, itemList);
         mRecyclerView.setAdapter(adapter);
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && manager.findLastCompletelyVisibleItemPosition() + 1 == adapter.getItemCount()) {
+                    super.onScrollStateChanged(recyclerView, newState);
+                    Handler loadHandler = new Handler(Looper.getMainLooper());
+                    loadHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            List<ListItem> addedItem = new ArrayList<>();
+                            for (int i = 0; i <= 20; i++) {
+                                addedItem.add(itemList.get(itemList.size() - 5));
+                            }
+                            adapter.addAllWithoutLoad(addedItem);
+                            adapter.addLoad();
+                            adapter.notifyDataSetChanged();
+                        }
+                    }, 500);
+                }
+            }
+        });
     }
 
     public static MainFragment newInstance(String tag) {
