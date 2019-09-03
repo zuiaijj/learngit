@@ -12,4 +12,5 @@
         android:text="@string/关注"
         android:textSize="50sp"/>
 
+
 </LinearLayout>

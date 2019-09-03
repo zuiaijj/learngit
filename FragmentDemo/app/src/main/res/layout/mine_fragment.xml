@@ -19,4 +19,23 @@
         android:textSize="50sp"
         android:layout_marginTop="100dp"/>
 
+    <com.example.fragmentdemo.MyFirstCombineView
+        android:id="@+id/my_first_combine_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+    </com.example.fragmentdemo.MyFirstCombineView>
+
+    <Button
+        android:id="@+id/button_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UP" />
+
+    <Button
+        android:id="@+id/button_down"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DOWN" />
+
 </LinearLayout>

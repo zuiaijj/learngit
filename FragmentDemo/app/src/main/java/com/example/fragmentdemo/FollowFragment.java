@@ -48,6 +48,8 @@ public class FollowFragment extends Fragment {
             }
         });
         return view;
+
+
     }
 
     private static class CountHander extends Handler{

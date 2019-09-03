@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,10 @@ public class MineFragment extends Fragment {
     private Timer timer;
     private CountHandler handler;
     private Context context;
+
+    private Button UP;
+    private Button DOWN;
+    private MyFirstCombineView myFirstCombineView;
 
 
     private static class CountHandler extends Handler {
@@ -67,6 +72,9 @@ public class MineFragment extends Fragment {
         timeTv = view.findViewById(R.id.time_tx);
         timeTv.setText(R.string.开始倒计时);
         context = this.getActivity();
+        UP = view.findViewById(R.id.button_up);
+        DOWN = view.findViewById(R.id.button_down);
+        myFirstCombineView = view.findViewById(R.id.my_first_combine_view);
         return view;
 
     }
@@ -110,6 +118,20 @@ public class MineFragment extends Fragment {
                         }
                     }
                 }, 0, 1000);
+            }
+        });
+
+        UP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myFirstCombineView.setUP();
+            }
+        });
+
+        DOWN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myFirstCombineView.setDown();
             }
         });
 
