@@ -13,18 +13,30 @@ public class MyFirstView extends View {
     private Paint mPaint = new Paint();
     private Paint mPaintTwo = new Paint();
 
+    /**
+     * 默认进度条长宽
+     */
     private static final int LENGTH = 800;
     private static final int HEIGHT = 20;
     /**
      * 进度条的百分比，最大为100
      */
     private int offset = 0;
-    private static final int MAX_OFFSET = 100;
+    public static final int MAX_OFFSET = 100;
     private double percent;
 
+    private int length = LENGTH;
+    private int height = HEIGHT;
+
+    private boolean isForward = true;//是否正向
 
     RectF rect = new RectF(0, 0, LENGTH, HEIGHT);
     RectF rectTwo = new RectF(0, 0, 0, HEIGHT);
+
+    public MyFirstView (Context context, int length, int height){
+        this(context,null);
+        initRecF(length,height);
+    }
 
     public MyFirstView(Context context) {
         this(context, null);
@@ -53,13 +65,27 @@ public class MyFirstView extends View {
         mPaintTwo.setStrokeWidth(1f);
     }
 
+    public void initRecF(int orderedLength, int orderedHeight){
+        height = orderedHeight;
+        length = orderedLength;
+        rect.right = length;
+        rect.bottom = height;
+        rectTwo.bottom = height;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawRoundRect(rect, 10, 10, mPaint);
-
-        rectTwo.right = (int) (rect.right * percent);
-        canvas.drawRoundRect(rectTwo, 10, 10, mPaintTwo);
+        if(isForward) {
+            rectTwo.left = 0;
+            rectTwo.right = (int) (rect.right * percent);
+            canvas.drawRoundRect(rectTwo, 10, 10, mPaintTwo);
+        } else {
+            rectTwo.right = length;
+            rectTwo.left = length - (int) (rect.right * percent);
+            canvas.drawRoundRect(rectTwo, 10, 10, mPaintTwo);
+        }
     }
 
     @Override
@@ -87,6 +113,14 @@ public class MyFirstView extends View {
         setMeasuredDimension(width, height);
     }
 
+    public int getOffset(){
+        return offset;
+    }
+
+    public int getLength(){
+        return length;
+    }
+
     public void startUp() {
         if (offset < MAX_OFFSET) {
             offset = offset + 5;
@@ -95,16 +129,17 @@ public class MyFirstView extends View {
         }
     }
 
-    public int getOffset(){
-        return offset;
-    }
-
     public void startDown() {
         if (offset > 0) {
             offset = offset - 5;
             percent = (double)offset/MAX_OFFSET;
             invalidate();
         }
+    }
+
+    public void changeDirection(){
+        isForward = !isForward;
+        invalidate();
     }
 }
 

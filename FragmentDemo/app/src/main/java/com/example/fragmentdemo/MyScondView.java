@@ -10,10 +10,12 @@ import android.view.View;
 
 public class MyScondView extends View {
 
+    public static final float LENGTH = 20;
+    public static final float HEIGHT = 40;
 
     private boolean isColored = false;
     Paint mPain = new Paint();
-    RectF rectF = new RectF(0, 0, 20, 40);
+    RectF rectF = new RectF(0, 0, LENGTH, HEIGHT);
     private Paint mPaintTwo = new Paint();
 
     public MyScondView(Context context) {
@@ -86,5 +88,9 @@ public class MyScondView extends View {
     public void unSetColored() {
         isColored = false;
         invalidate();
+    }
+
+    public int getLength(){
+        return (int)rectF.right;
     }
 }

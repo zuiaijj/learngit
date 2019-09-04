@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment;
 
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -31,7 +33,10 @@ public class MineFragment extends Fragment {
 
     private Button UP;
     private Button DOWN;
+    private Button Change;
     private MyFirstCombineView myFirstCombineView;
+    private List<Double> secondViewPercentList = new ArrayList<>();
+
 
 
     private static class CountHandler extends Handler {
@@ -69,15 +74,34 @@ public class MineFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.mine_fragment, container, false);
+        initView(view);
+        initCombineView(view);
+        return view;
+    }
+
+    private void initView(View view){
         timeTv = view.findViewById(R.id.time_tx);
         timeTv.setText(R.string.开始倒计时);
         context = this.getActivity();
         UP = view.findViewById(R.id.button_up);
         DOWN = view.findViewById(R.id.button_down);
-        myFirstCombineView = view.findViewById(R.id.my_first_combine_view);
-        return view;
-
+        Change = view.findViewById(R.id.button_change);
     }
+
+    private void initCombineView(View view){
+
+        myFirstCombineView = view.findViewById(R.id.my_first_combine_view);
+        myFirstCombineView.setFirstViewConfig(800,20);
+        initViewPercentList();
+        myFirstCombineView.addSecondView(secondViewPercentList);
+    }
+
+    private void initViewPercentList() {
+        secondViewPercentList.add(0.2);
+        secondViewPercentList.add(0.5);
+        secondViewPercentList.add(0.8);
+    }
+
 
 
     @Override
@@ -132,6 +156,13 @@ public class MineFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 myFirstCombineView.setDown();
+            }
+        });
+
+        Change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myFirstCombineView.changeDirection();
             }
         });
 
